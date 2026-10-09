@@ -61,15 +61,20 @@
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* Fireworks are only shown for the A賞 reveal. */
+#fireworksCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:20;pointer-events:none;display:none}
+#fireworksCanvas.active{display:block}
+@media (prefers-reduced-motion: reduce){#fireworksCanvas{display:none!important}}
 </style></head>
 <body><main class="page">
 <section class="hero"><div class="eyebrow">SCHOOL IDOL COLLECTION</div><h1><span>Love Live!</span><br>一番賞抽獎</h1></section>
 <article class="draw-panel draw-cta"><button class="primary" id="drawBtn">開始抽獎　✦</button><div class="note" id="drawNote" aria-live="polite"></div></article>
 <section class="content"><article class="panel"><div class="panel-head"><h2>🎁 本次獎項</h2><span class="subtle">PRIZE LINEUP</span></div><div class="prizes" id="prizes"></div></article></section>
 <section class="panel history"><div class="panel-head"><h2>✨ 抽獎紀錄</h2><span class="subtle">YOUR COLLECTION</span></div><div id="historyList" class="history-list"><div class="history-empty">獎品揭曉後，會在這裡留下紀錄。</div></div></section>
-<div id="thanks" class="thanks"><a href="https://1kuji.com/products/lovelive24?fbclid=IwdGRzaAU1qlRjbGNrBTWqTmV4dG4DYWVtAjExAHBkb2YFc3J0YwZhcHBfaWQMMzUwNjg1NTMxNzI4AAEe3XGUJ2Jcg5Ef0RZs2Y9QZHD-9Wdko43Haf7J_jzdrRjKeW7S6uaDNoDV210_aem_2LGfYjKWWcBxLH-w_SVFMg" target="_blank" rel="noopener noreferrer">前往 Love Live! 一番賞官方商品頁面 ↗</a></div><footer class="footer"><a href="https://1kuji.com/products/lovelive24?fbclid=IwdGRzaAU1qlRjbGNrBTWqTmV4dG4DYWVtAjExAHBkb2YFc3J0YwZhcHBfaWQMMzUwNjg1NTMxNzI4AAEe3XGUJ2Jcg5Ef0RZs2Y9QZHD-9Wdko43Haf7J_jzdrRjKeW7S6uaDNoDV210_aem_2LGfYjKWWcBxLH-w_SVFMg" target="_blank" rel="noopener noreferrer">前往 Love Live! 一番賞官方商品頁面 ↗</a></footer>
+<footer class="footer"><a href="https://1kuji.com/products/lovelive24?fbclid=IwdGRzaAU1qlRjbGNrBTWqTmV4dG4DYWVtAjExAHBkb2YFc3J0YwZhcHBfaWQMMzUwNjg1NTMxNzI4AAEe3XGUJ2Jcg5Ef0RZs2Y9QZHD-9Wdko43Haf7J_jzdrRjKeW7S6uaDNoDV210_aem_2LGfYjKWWcBxLH-w_SVFMg" target="_blank" rel="noopener noreferrer">獎項一覽</a></footer>
 </main>
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><section class="modal"><div class="modal-head">一番くじ倶楽部</div><div class="modal-strip">さあ右手でデザインしましょ</div><div class="modal-body" id="modalBody"></div><div class="modal-foot">※購入店以外 ディーラー有効</div></section></div>
+<canvas id="fireworksCanvas" aria-hidden="true"></canvas><div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><section class="modal"><div class="modal-head">一番くじ倶楽部</div><div class="modal-strip">さあ右手でデザインしましょ</div><div class="modal-body" id="modalBody"></div><div class="modal-foot">※購入店以外 ディーラー有効</div></section></div>
 <script>
 (() => {
   // Fixed sequence as requested: first O賞, then A賞. No randomness or persistence.
@@ -97,11 +102,67 @@
   let draws = 0, busy = false, modalState = 'closed';
   const $ = id => document.getElementById(id);
   const overlay = $('overlay'), modalBody = $('modalBody'), drawBtn = $('drawBtn');
+  const fireworksCanvas = $('fireworksCanvas');
+  const fireworksCtx = fireworksCanvas.getContext('2d');
+  let fireworksFrame = 0, fireworksTimer = 0, fireworksRockets = [], fireworksParticles = [];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function resizeFireworks(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    fireworksCanvas.width=Math.floor(window.innerWidth*dpr);
+    fireworksCanvas.height=Math.floor(window.innerHeight*dpr);
+    fireworksCtx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function launchFireworks(){
+    if(reduceMotion) return;
+    stopFireworks(); resizeFireworks(); fireworksCanvas.classList.add('active');
+    fireworksRockets=[]; fireworksParticles=[];
+    const start=performance.now(); let lastLaunch=0;
+    function frame(now){
+      const w=window.innerWidth,h=window.innerHeight;
+      fireworksCtx.clearRect(0,0,w,h);
+      /* Keep launching fireworks continuously while the A賞 result modal is open. */
+      if(now-start-lastLaunch>85){
+        lastLaunch=now-start;
+        const x=w*(.04+Math.random()*.92), targetY=h*(.05+Math.random()*.68);
+        fireworksRockets.push({x,y:h+8,vx:(Math.random()-.5)*5,vy:-(13+Math.random()*7),targetY,hue:[326,195,48,270,0,185][Math.floor(Math.random()*6)]});
+      }
+      fireworksRockets=fireworksRockets.filter(r=>{
+        r.x+=r.vx;r.y+=r.vy;r.vy+=.055;
+        fireworksCtx.beginPath();fireworksCtx.moveTo(r.x,r.y+13);fireworksCtx.lineTo(r.x,r.y);
+        fireworksCtx.strokeStyle=`hsla(${r.hue},100%,75%,.9)`;fireworksCtx.lineWidth=2;fireworksCtx.stroke();
+        if(r.y<=r.targetY||r.vy>=0){
+          /* Huge, screen-filling bursts: roughly 10x the original spread. */
+          const count=180;
+          for(let i=0;i<count;i++){const a=Math.PI*2*i/count+Math.random()*.08, speed=8+Math.random()*24;
+            fireworksParticles.push({x:r.x,y:r.y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,life:55+Math.random()*45,max:100,hue:r.hue,size:4+Math.random()*9});}
+          return false;
+        }return true;
+      });
+      fireworksParticles=fireworksParticles.filter(p=>{
+        p.x+=p.vx;p.y+=p.vy;p.vy+=.045;p.vx*=.99;p.life--;
+        const alpha=Math.max(0,p.life/p.max);
+        fireworksCtx.beginPath();fireworksCtx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        fireworksCtx.fillStyle=`hsla(${p.hue},100%,${65+Math.random()*25}%,${alpha})`;fireworksCtx.fill();
+        return p.life>0;
+      });
+      /* Repeat indefinitely until the result modal is closed. */
+      fireworksFrame=requestAnimationFrame(frame);
+    }
+    fireworksFrame=requestAnimationFrame(frame);
+  }
+  function stopFireworks(){
+    if(fireworksFrame)cancelAnimationFrame(fireworksFrame);
+    if(fireworksTimer)clearTimeout(fireworksTimer);
+    fireworksFrame=0;fireworksTimer=0;
+    if(fireworksCtx)fireworksCtx.clearRect(0,0,window.innerWidth,window.innerHeight);
+    fireworksCanvas.classList.remove('active');
+  }
+  window.addEventListener('resize',()=>{if(fireworksCanvas.classList.contains('active'))resizeFireworks();});
   function renderPrizes(){
-    $('prizes').innerHTML = prizes.map(p => `<div class="prize ${p.rank==='O賞'?'o':''} ${p.stock===0?'empty':''}"><div class="rank">${p.rank}</div><div class="name">${p.name}</div><div class="stock">${p.detail || ''}</div><div class="stock">庫存 ${p.stock} 件</div></div>`).join('');
+    $('prizes').innerHTML = prizes.map(p => `<div class="prize ${p.rank==='O賞'?'o':''} ${p.stock===0?'empty':''}"><div class="rank">${p.rank}</div><div class="name">${p.name}</div><div class="stock">${p.detail || ''}</div><div class="stock">剩餘 ${p.stock} 件</div></div>`).join('');
   }
   function showModal(state, html){modalState=state;modalBody.innerHTML=html;overlay.classList.add('show');}
-  function closeModal(){overlay.classList.remove('show');modalState='closed';}
+  function closeModal(){overlay.classList.remove('show');modalState='closed';stopFireworks();}
   function confirmDialog(){
     if(busy || draws>=sequence.length) return;
     showModal('confirm', `<div class="modal-title" id="modalTitle">確認抽獎</div><div class="modal-desc">要抽取本次一番賞嗎？</div><div class="modal-actions"><button class="modal-btn cancel" id="cancelBtn">取消</button><button class="modal-btn confirm" id="confirmBtn">確認</button></div>`);
@@ -127,6 +188,7 @@
     const list=$('historyList');if(draws===1)list.innerHTML='';list.prepend(row);
     const isLast=draws>=sequence.length;
     showModal('result', `<div class="result-burst">✦ ✧ ★ ✧ ✦</div><div class="result-rank" id="modalTitle">${rank}</div><div class="result-name">${prize ? prize.name : '限定獎品'}</div><div class="modal-actions"><button class="modal-btn confirm" id="resultOk">確認</button></div>`);
+    if(rank==='A賞') launchFireworks();
     $('resultOk').addEventListener('click',()=>{
       closeModal();busy=false;
       if(isLast){drawBtn.disabled=true;$('drawNote').textContent='本次抽獎已結束';$('thanks').classList.add('show');}
