@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Love Live! 一番賞抽獎</title>
+<style>
+:root{--pink:#ff6fae;--blue:#55bdf5;--navy:#202a50;--yellow:#ffe36e;--ink:#252746;--muted:#727b99;--paper:#fffdfb}*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 8% 12%,#ffe0ef 0,transparent 26%),radial-gradient(circle at 92% 10%,#d8f4ff 0,transparent 28%),linear-gradient(145deg,#fff9fc,#f1faff);overflow-x:hidden}.page{max-width:1060px;margin:auto;padding:28px 22px 60px}.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:800;letter-spacing:.12em;color:#697493}.brand{display:flex;align-items:center;gap:9px}.brand-mark{width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--pink),#ffc2d9);display:grid;place-items:center;color:white;font-size:20px;box-shadow:0 5px 14px #ff9dc44d}.pill{border:1px solid #e8eaf4;background:#ffffffb8;border-radius:999px;padding:8px 13px;letter-spacing:.03em}.hero{position:relative;text-align:center;padding:45px 12px 27px}.eyebrow{display:inline-flex;align-items:center;gap:8px;background:white;border:1px solid #f2dce7;border-radius:99px;padding:8px 15px;color:#e65391;font-size:12px;font-weight:850;letter-spacing:.13em;box-shadow:0 5px 20px #db8aab14}.eyebrow:before,.eyebrow:after{content:'✦';color:#ffc84e}.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.13;letter-spacing:-.04em;margin:19px 0 12px;font-weight:950}.hero h1 span{color:#ed5d9d;text-shadow:2px 3px 0 #ffdce9}.hero p{margin:0;color:#78809a;font-size:14px}.stage{height:145px;max-width:620px;margin:24px auto 0;position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(115deg,#ffb7d4,#ffdeec 47%,#bfeaff);box-shadow:0 16px 36px #7ca9ce22;border:5px solid white}.stage:before,.stage:after{content:'';position:absolute;top:-45px;width:190px;height:240px;background:linear-gradient(90deg,#ff679fbb,#fff0 80%);clip-path:polygon(0 0,100% 0,65% 100%,30% 100%)}.stage:before{left:5%}.stage:after{right:5%;transform:scaleX(-1)}.stage-lights{position:absolute;inset:0;background:repeating-linear-gradient(105deg,transparent 0 38px,#ffffff50 39px 42px,transparent 43px 75px)}.stage-platform{position:absolute;left:50%;bottom:-35px;transform:translateX(-50%);width:270px;height:95px;border-radius:50%;background:linear-gradient(#fff,#ffeff7);border:7px solid #fff9;box-shadow:0 -7px 0 #ff77af}.idol{position:absolute;z-index:1;bottom:24px;left:50%;transform:translateX(-50%);font-size:52px;filter:drop-shadow(0 4px 0 #fff)}.spark{position:absolute;z-index:2;font-size:23px;color:white;text-shadow:0 2px 6px #e85c9b}.spark.s1{left:19%;top:25px}.spark.s2{right:20%;top:17px;color:#fff16b}.spark.s3{right:31%;bottom:25px;font-size:15px}.content{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;max-width:850px;margin:26px auto 0}.panel{background:#ffffffd9;border:1px solid #e8eaf4;border-radius:22px;padding:22px;box-shadow:0 12px 34px #5b7b9c0d}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}.panel h2{font-size:16px;margin:0;font-weight:900}.subtle{font-size:11px;color:#9aa1b5;letter-spacing:.1em;font-weight:800}.prizes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.prize{position:relative;min-height:93px;border:1px solid #e9eaf2;border-radius:14px;background:linear-gradient(145deg,#fff,#f8fbff);padding:12px 10px;text-align:left;overflow:hidden}.prize:after{content:'✦';position:absolute;right:7px;top:3px;color:#e9eefa;font-size:21px}.prize .rank{font-size:21px;line-height:1;font-weight:950;color:#e75c9b}.prize.o .rank{color:#378fce}.prize .name{font-size:11px;font-weight:750;margin-top:8px;line-height:1.45}.prize .stock{font-size:10px;color:#929ab0;margin-top:4px}.prize.empty{opacity:.48;filter:grayscale(.7)}.draw-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:260px;background:linear-gradient(145deg,#fff,#fff7fb)}.ticket{width:100%;max-width:240px;border-radius:16px;background:linear-gradient(115deg,#eaf8ff,#fff0f7);border:1px dashed #9ccff0;padding:18px 16px 15px;position:relative;margin-bottom:19px}.ticket:before,.ticket:after{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#f7faff;top:50%;transform:translateY(-50%);border:1px solid #bfe0f4}.ticket:before{left:-10px}.ticket:after{right:-10px}.ticket-icon{font-size:29px}.ticket strong{display:block;margin-top:5px;font-size:15px}.ticket small{display:block;margin-top:5px;color:#77839e;font-size:11px}.primary{border:0;border-radius:14px;background:linear-gradient(100deg,#ff6da9,#ff8cba);color:white;font-weight:900;font-size:15px;padding:15px 24px;min-width:210px;box-shadow:0 7px 0 #e94f91,0 13px 24px #ff78ae3d;cursor:pointer;transition:transform .15s,box-shadow .15s}.primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 9px 0 #e94f91,0 16px 27px #ff78ae4a}.primary:active:not(:disabled){transform:translateY(4px);box-shadow:0 3px 0 #e94f91}.primary:disabled{background:#c7cbd8;box-shadow:0 5px 0 #aeb4c4;cursor:not-allowed}.note{margin-top:13px;font-size:11px;color:#969db1}.history{max-width:850px;margin:18px auto 0}.history-list{display:flex;flex-direction:column;gap:8px}.history-empty{font-size:12px;color:#a1a7b8;padding:12px 0}.history-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;background:#fbfcff;border:1px solid #edf0f7;border-radius:12px}.history-left{display:flex;align-items:center;gap:10px}.history-rank{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#fff0f6;color:#e45393;font-weight:950}.history-item b{font-size:13px}.history-item small{display:block;color:#929ab0;font-size:10px;margin-top:3px}.history-tag{font-size:10px;font-weight:800;color:#6597bb;background:#edf8ff;border-radius:99px;padding:6px 9px}.thanks{display:none;margin:16px auto 0;max-width:850px;padding:17px;text-align:center;border-radius:16px;color:#d94c8e;font-weight:900;background:#fff0f7;border:1px solid #ffd2e4}.thanks.show{display:block}.thanks a{color:inherit;text-decoration:none}.thanks a:hover{text-decoration:underline}.footer{text-align:center;margin-top:28px;font-size:12px;color:#a4aabd;letter-spacing:.02em}.footer a{display:inline-block;color:#e65391;text-decoration:none;font-weight:800;padding:10px 16px;border:1px solid #f3cddd;background:#ffffffb8;border-radius:999px}.footer a:hover{text-decoration:underline}.draw-cta{max-width:850px;margin:0 auto;padding:0 0 4px;min-height:0;border:0;box-shadow:none;background:transparent}.draw-cta .primary{min-width:240px}.draw-cta .note:empty{display:none}
+/* shared ichiban-kuji card modal */
+.overlay{position:fixed;inset:0;z-index:10;background:#171d38b8;display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(5px)}.overlay.show{display:flex}.modal{width:min(390px,100%);background:#101114;border:5px solid #fff;box-shadow:0 24px 90px #10162b77;position:relative;overflow:hidden;animation:pop .22s ease-out}.modal:before{content:'';position:absolute;inset:5px;border:1px solid #ffffff38;pointer-events:none;z-index:1}.modal-head{height:55px;background:linear-gradient(105deg,#1685d0,#55c8ff);clip-path:polygon(0 0,100% 0,100% 77%,94% 100%,0 100%);display:flex;align-items:center;padding:0 20px;color:#fff;font-size:19px;font-weight:950;letter-spacing:.04em;text-shadow:0 2px 0 #1265a1}.modal-head:before{content:'✦';font-size:23px;margin-right:9px;color:#fff36b}.modal-strip{background:#fff;color:#222;font-size:11px;letter-spacing:.1em;text-align:center;padding:7px 4px;font-weight:850}.modal-body{color:#fff;text-align:center;padding:27px 22px 25px;min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center}.modal-title{font-size:23px;font-weight:950;letter-spacing:.04em}.modal-desc{color:#c6c8d1;font-size:13px;line-height:1.7;margin-top:10px}.modal-actions{display:flex;gap:10px;justify-content:center;margin-top:22px;width:100%}.modal-btn{border:0;border-radius:6px;padding:11px 22px;min-width:100px;font-size:13px;font-weight:900;cursor:pointer;background:#fff;color:#222}.modal-btn.confirm{background:#ffdc65;color:#2b2441;box-shadow:0 3px 0 #b78d25}.modal-btn.cancel{background:#d5d6db;color:#282b35;box-shadow:0 3px 0 #858895}.modal-btn:disabled{opacity:.45;cursor:not-allowed}.modal-foot{height:31px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#65676e,#a2a3a8,#65676e);clip-path:polygon(0 0,100% 0,96% 100%,4% 100%);color:#fff;font-size:10px;letter-spacing:.04em;font-weight:750}.loader{width:58px;height:58px;border:5px solid #ffffff30;border-top-color:#ffdc65;border-right-color:#59c7ff;border-radius:50%;animation:spin .8s linear infinite;margin:18px 0 6px}.result-rank{font-size:55px;line-height:1.05;color:#ffdf67;font-weight:1000;text-shadow:0 3px 0 #b88425,0 0 24px #ffe47b33}.result-name{font-size:17px;font-weight:900;margin-top:12px}.result-burst{font-size:22px;letter-spacing:8px;color:#ff7caf;margin-bottom:8px}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+/* Responsive layout: desktop, tablet, and mobile */
+@media (max-width: 900px) {
+  .page{max-width:760px;padding:24px 18px 48px}
+  .content{grid-template-columns:minmax(0,1fr);max-width:680px}
+  .draw-panel{min-height:0}
+  .prizes{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .history,.thanks{max-width:680px}
+}
+@media (max-width: 600px) {
+  .page{padding:16px 12px 32px}
+  .topline{align-items:flex-start;flex-wrap:wrap;font-size:10px;letter-spacing:.07em}
+  .brand{gap:7px}.brand-mark{width:30px;height:30px}
+  .pill{padding:7px 9px}
+  .hero{padding:32px 4px 18px}
+  .eyebrow{font-size:10px;padding:7px 11px;letter-spacing:.08em}
+  .hero h1{font-size:clamp(30px,9vw,44px);margin:16px 0 8px;overflow-wrap:anywhere}
+  .stage{height:112px;margin-top:18px;border-width:4px;border-radius:18px}
+  .stage-platform{width:200px;height:75px}
+  .idol{font-size:42px;bottom:20px}
+  .content{margin-top:18px;gap:14px}
+  .panel{padding:15px;border-radius:17px}
+  .panel-head{align-items:flex-start;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+  .panel h2{font-size:15px}.subtle{font-size:9px}
+  .prizes{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+  .prize{min-height:88px;padding:10px 8px;border-radius:12px;min-width:0}
+  .prize .rank{font-size:19px}.prize .name{font-size:10px;overflow-wrap:anywhere}
+  .prize .stock{font-size:9px}
+  .draw-panel{min-height:0}
+  .draw-cta{padding:0 0 2px}.draw-cta .primary{width:min(100%,360px)}
+  .primary{width:100%;min-width:0;padding:14px 16px}
+  .history{margin-top:14px}
+  .history-item{padding:9px;gap:8px}.history-left{gap:8px;min-width:0}
+  .history-rank{width:34px;height:34px;flex:0 0 34px}
+  .history-item b{font-size:12px}.history-tag{font-size:9px;padding:5px 7px;white-space:nowrap}
+  .thanks{padding:14px;margin-top:12px;overflow-wrap:anywhere}
+  .footer{line-height:1.6;margin-top:22px}
+  .overlay{padding:12px;overflow-y:auto;align-items:center}
+  .modal{width:min(390px,100%);max-width:100%;max-height:calc(100dvh - 24px);overflow-y:auto;border-width:4px}
+  .modal-head{height:49px;font-size:17px;padding:0 14px}
+  .modal-body{padding:23px 16px;min-height:160px}
+  .modal-title{font-size:21px}.result-rank{font-size:48px}.result-name{font-size:15px;overflow-wrap:anywhere}
+  .modal-actions{gap:8px}.modal-btn{min-width:0;flex:1;padding:12px 10px}
+}
+@media (max-width: 380px) {
+  .topline .pill{font-size:9px}
+  .prizes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero h1{font-size:30px}
+  .panel{padding:12px}
+  .modal-strip{font-size:10px;letter-spacing:.04em}
+  .modal-foot{font-size:9px}
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style></head>
+<body><main class="page">
+<section class="hero"><div class="eyebrow">SCHOOL IDOL COLLECTION</div><h1><span>Love Live!</span><br>一番賞抽獎</h1></section>
+<article class="draw-panel draw-cta"><button class="primary" id="drawBtn">開始抽獎　✦</button><div class="note" id="drawNote" aria-live="polite"></div></article>
+<section class="content"><article class="panel"><div class="panel-head"><h2>🎁 本次獎項</h2><span class="subtle">PRIZE LINEUP</span></div><div class="prizes" id="prizes"></div></article></section>
+<section class="panel history"><div class="panel-head"><h2>✨ 抽獎紀錄</h2><span class="subtle">YOUR COLLECTION</span></div><div id="historyList" class="history-list"><div class="history-empty">獎品揭曉後，會在這裡留下紀錄。</div></div></section>
+<div id="thanks" class="thanks"><a href="https://1kuji.com/products/lovelive24?fbclid=IwdGRzaAU1qlRjbGNrBTWqTmV4dG4DYWVtAjExAHBkb2YFc3J0YwZhcHBfaWQMMzUwNjg1NTMxNzI4AAEe3XGUJ2Jcg5Ef0RZs2Y9QZHD-9Wdko43Haf7J_jzdrRjKeW7S6uaDNoDV210_aem_2LGfYjKWWcBxLH-w_SVFMg" target="_blank" rel="noopener noreferrer">前往 Love Live! 一番賞官方商品頁面 ↗</a></div><footer class="footer"><a href="https://1kuji.com/products/lovelive24?fbclid=IwdGRzaAU1qlRjbGNrBTWqTmV4dG4DYWVtAjExAHBkb2YFc3J0YwZhcHBfaWQMMzUwNjg1NTMxNzI4AAEe3XGUJ2Jcg5Ef0RZs2Y9QZHD-9Wdko43Haf7J_jzdrRjKeW7S6uaDNoDV210_aem_2LGfYjKWWcBxLH-w_SVFMg" target="_blank" rel="noopener noreferrer">前往 Love Live! 一番賞官方商品頁面 ↗</a></footer>
+</main>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><section class="modal"><div class="modal-head">一番くじ倶楽部</div><div class="modal-strip">さあ右手でデザインしましょ</div><div class="modal-body" id="modalBody"></div><div class="modal-foot">※購入店以外 ディーラー有効</div></section></div>
+<script>
+(() => {
+  // Fixed sequence as requested: first O賞, then A賞. No randomness or persistence.
+  const prizes = [
+    {rank:'A賞',name:'イラストボード 1期生集合！',stock:1,detail:'Liella! 1期生集合イラスト・A3'},
+    {rank:'B賞',name:'イラストボード 2期生集合！',stock:1,detail:'Liella! 2期生集合イラスト・A3'},
+    {rank:'C賞',name:'イラストボード 3期生集合！',stock:1,detail:'Liella! 3期生集合イラスト・A3'},
+    {rank:'D賞',name:'イラストボード 澁谷かのん',stock:1,detail:'A3'},
+    {rank:'E賞',name:'イラストボード 唐 可可',stock:1,detail:'A3'},
+    {rank:'F賞',name:'イラストボード 嵐 千砂都',stock:1,detail:'A3'},
+    {rank:'G賞',name:'イラストボード 平安名すみれ',stock:1,detail:'A3'},
+    {rank:'H賞',name:'イラストボード 葉月 恋',stock:1,detail:'A3'},
+    {rank:'I賞',name:'イラストボード 桜小路きな子',stock:1,detail:'A3'},
+    {rank:'J賞',name:'イラストボード 米女メイ',stock:1,detail:'A3'},
+    {rank:'K賞',name:'イラストボード 若菜四季',stock:1,detail:'A3'},
+    {rank:'L賞',name:'イラストボード 鬼塚夏美',stock:1,detail:'A3'},
+    {rank:'M賞',name:'イラストボード ウィーン・マルガレーテ',stock:1,detail:'A3'},
+    {rank:'N賞',name:'イラストボード 鬼塚冬毬',stock:1,detail:'A3'},
+    {rank:'O賞',name:'クリアラバーチャーム',stock:11,detail:'全11種・約5.5cm'},
+    {rank:'P賞',name:'マフラータオル',stock:11,detail:'全11種・約80cm'},
+    {rank:'Q賞',name:'アクリルスタンド',stock:11,detail:'全11種・約12～14cm'},
+    {rank:'ラストワン賞',name:'ビジュアルボード',stock:1,detail:'Liella! 11人集合・ポスターA3／ボードB3'}
+  ];
+  const sequence = ['O賞','A賞'];
+  let draws = 0, busy = false, modalState = 'closed';
+  const $ = id => document.getElementById(id);
+  const overlay = $('overlay'), modalBody = $('modalBody'), drawBtn = $('drawBtn');
+  function renderPrizes(){
+    $('prizes').innerHTML = prizes.map(p => `<div class="prize ${p.rank==='O賞'?'o':''} ${p.stock===0?'empty':''}"><div class="rank">${p.rank}</div><div class="name">${p.name}</div><div class="stock">${p.detail || ''}</div><div class="stock">庫存 ${p.stock} 件</div></div>`).join('');
+  }
+  function showModal(state, html){modalState=state;modalBody.innerHTML=html;overlay.classList.add('show');}
+  function closeModal(){overlay.classList.remove('show');modalState='closed';}
+  function confirmDialog(){
+    if(busy || draws>=sequence.length) return;
+    showModal('confirm', `<div class="modal-title" id="modalTitle">確認抽獎</div><div class="modal-desc">要抽取本次一番賞嗎？<br>準備好揭曉你的專屬獎品了嗎？</div><div class="modal-actions"><button class="modal-btn cancel" id="cancelBtn">取消</button><button class="modal-btn confirm" id="confirmBtn">確認</button></div>`);
+    $('cancelBtn').addEventListener('click',closeModal);
+    $('confirmBtn').addEventListener('click',beginDraw);
+  }
+  function beginDraw(){
+    if(busy || draws>=sequence.length || modalState!=='confirm') return;
+    busy=true;
+    showModal('drawing', `<div class="modal-title" id="modalTitle">抽獎中</div><div class="loader" aria-hidden="true"></div><div class="modal-desc">正在為你揭曉幸運獎項……<br>請稍候片刻 ✦</div>`);
+    // Inventory and draw count remain unchanged during the 3-second animation.
+    window.setTimeout(revealResult,3000);
+  }
+  function revealResult(){
+    const rank=sequence[draws];
+    const prize=prizes.find(p=>p.rank===rank);
+    // Update inventory and draw count only when the result is produced.
+    if(prize && prize.stock>0) prize.stock--;
+    draws++;
+    renderPrizes();
+    const row=document.createElement('div');row.className='history-item';
+    row.innerHTML=`<div class="history-left"><div class="history-rank">${rank}</div><div><b>${prize ? prize.name : '限定獎品'}</b><small>第 ${draws} 次抽獎 · 已揭曉</small></div></div><span class="history-tag">GET ✦</span>`;
+    const list=$('historyList');if(draws===1)list.innerHTML='';list.prepend(row);
+    const isLast=draws>=sequence.length;
+    showModal('result', `<div class="result-burst">✦ ✧ ★ ✧ ✦</div><div class="result-rank" id="modalTitle">${rank}</div><div class="result-name">${prize ? prize.name : '限定獎品'}</div><div class="modal-desc">恭喜獲得本次專屬收藏！</div><div class="modal-actions"><button class="modal-btn confirm" id="resultOk">確認</button></div>`);
+    $('resultOk').addEventListener('click',()=>{
+      closeModal();busy=false;
+      if(isLast){drawBtn.disabled=true;$('drawNote').textContent='本次抽獎已結束';$('thanks').classList.add('show');}
+      else $('drawNote').textContent='獎品已揭曉，準備下一次抽獎吧！';
+    });
+  }
+  drawBtn.addEventListener('click',confirmDialog);
+  // The overlay cannot be dismissed by backdrop, Escape, or close controls while drawing.
+  overlay.addEventListener('click',e=>{if(e.target===overlay && modalState==='confirm')closeModal();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape' && modalState==='confirm')closeModal();});
+  renderPrizes();
+})();
+</script></body></html>
