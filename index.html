@@ -104,14 +104,14 @@
   function closeModal(){overlay.classList.remove('show');modalState='closed';}
   function confirmDialog(){
     if(busy || draws>=sequence.length) return;
-    showModal('confirm', `<div class="modal-title" id="modalTitle">確認抽獎</div><div class="modal-desc">要抽取本次一番賞嗎？<br>準備好揭曉你的專屬獎品了嗎？</div><div class="modal-actions"><button class="modal-btn cancel" id="cancelBtn">取消</button><button class="modal-btn confirm" id="confirmBtn">確認</button></div>`);
+    showModal('confirm', `<div class="modal-title" id="modalTitle">確認抽獎</div><div class="modal-desc">要抽取本次一番賞嗎？</div><div class="modal-actions"><button class="modal-btn cancel" id="cancelBtn">取消</button><button class="modal-btn confirm" id="confirmBtn">確認</button></div>`);
     $('cancelBtn').addEventListener('click',closeModal);
     $('confirmBtn').addEventListener('click',beginDraw);
   }
   function beginDraw(){
     if(busy || draws>=sequence.length || modalState!=='confirm') return;
     busy=true;
-    showModal('drawing', `<div class="modal-title" id="modalTitle">抽獎中</div><div class="loader" aria-hidden="true"></div><div class="modal-desc">正在為你揭曉幸運獎項……<br>請稍候片刻 ✦</div>`);
+    showModal('drawing', `<div class="modal-title" id="modalTitle">抽獎中</div><div class="loader" aria-hidden="true"></div>`);
     // Inventory and draw count remain unchanged during the 3-second animation.
     window.setTimeout(revealResult,3000);
   }
@@ -126,7 +126,7 @@
     row.innerHTML=`<div class="history-left"><div class="history-rank">${rank}</div><div><b>${prize ? prize.name : '限定獎品'}</b><small>第 ${draws} 次抽獎 · 已揭曉</small></div></div><span class="history-tag">GET ✦</span>`;
     const list=$('historyList');if(draws===1)list.innerHTML='';list.prepend(row);
     const isLast=draws>=sequence.length;
-    showModal('result', `<div class="result-burst">✦ ✧ ★ ✧ ✦</div><div class="result-rank" id="modalTitle">${rank}</div><div class="result-name">${prize ? prize.name : '限定獎品'}</div><div class="modal-desc">恭喜獲得本次專屬收藏！</div><div class="modal-actions"><button class="modal-btn confirm" id="resultOk">確認</button></div>`);
+    showModal('result', `<div class="result-burst">✦ ✧ ★ ✧ ✦</div><div class="result-rank" id="modalTitle">${rank}</div><div class="result-name">${prize ? prize.name : '限定獎品'}</div><div class="modal-actions"><button class="modal-btn confirm" id="resultOk">確認</button></div>`);
     $('resultOk').addEventListener('click',()=>{
       closeModal();busy=false;
       if(isLast){drawBtn.disabled=true;$('drawNote').textContent='本次抽獎已結束';$('thanks').classList.add('show');}
